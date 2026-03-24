@@ -224,7 +224,7 @@
        ====================== */
     .hero {
       position: relative;
-      padding: 160px 0 100px;
+      padding: 100px 0 100px;
       overflow: hidden;
     }
     .hero > .wrap {
@@ -239,17 +239,18 @@
       max-width: 600px;
     }
     .hero-gif {
-      flex: 0 0 380px;
+      flex: 0 0 440px;
       position: relative;
       z-index: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-right: -40px;
     }
     .hero-gif-wrapper {
       position: relative;
-      width: 320px;
-      height: 320px;
+      width: 390px;
+      height: 390px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -285,8 +286,8 @@
       to { transform: rotate(360deg); }
     }
     .hero-gif-wrapper img {
-      width: 280px;
-      height: 280px;
+      width: 340px;
+      height: 340px;
       object-fit: contain;
       border-radius: 50%;
       position: relative;
@@ -330,8 +331,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 260px;
-      height: 260px;
+      width: 320px;
+      height: 320px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(200, 149, 108, 0.15), transparent 70%);
       animation: pulse-glow 3s ease-in-out infinite;
@@ -939,7 +940,7 @@
 
     @media (max-width: 600px) {
       section { padding: 60px 0; }
-      .hero { padding: 130px 0 70px; }
+      .hero { padding: 90px 0 60px; }
       .hero-gif {
         flex: none;
         width: 100%;
