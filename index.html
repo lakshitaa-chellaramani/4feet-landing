@@ -1170,8 +1170,14 @@
       reveals.forEach(function(el) { observer.observe(el); });
     })();
 
-    /* Waitlist form submission to Google Sheets */
+    /* Waitlist form submission via hidden iframe (bypasses CORS) */
     var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2rHnuUj1Mvh5yw7vh-KGHTLrJZV1VJoEZ7TSTskVCWe--20qiqXNKS5Pms1a2gjyD/exec';
+
+    /* Create hidden iframe target */
+    var iframe = document.createElement('iframe');
+    iframe.name = 'hidden-submit-frame';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
 
     document.querySelectorAll('form').forEach(function (form) {
       form.addEventListener('submit', function (e) {
@@ -1188,17 +1194,28 @@
         btn.textContent = 'Joining...';
         btn.disabled = true;
 
-        var formData = new FormData();
-        formData.append('email', email);
-        formData.append('petType', petType);
-        formData.append('source', 'waitlist-landing');
+        /* Build a real hidden form and submit it to the iframe */
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = GOOGLE_SCRIPT_URL;
+        hiddenForm.target = 'hidden-submit-frame';
+        hiddenForm.style.display = 'none';
 
-        fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          body: formData
-        })
-        .then(function (r) { return r.text(); })
-        .then(function () {
+        var fields = { email: email, petType: petType, source: 'waitlist-landing' };
+        for (var key in fields) {
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = fields[key];
+          hiddenForm.appendChild(input);
+        }
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+        document.body.removeChild(hiddenForm);
+
+        /* Show success after a short delay (iframe submit has no callback) */
+        setTimeout(function () {
           btn.textContent = "You're on the list!";
           btn.style.background = '#4a7c59';
           emailInput.value = '';
@@ -1207,16 +1224,7 @@
             btn.style.background = '';
             btn.disabled = false;
           }, 3000);
-        })
-        .catch(function () {
-          btn.textContent = 'Oops, try again!';
-          btn.style.background = '#c0392b';
-          btn.disabled = false;
-          setTimeout(function () {
-            btn.textContent = originalText;
-            btn.style.background = '';
-          }, 3000);
-        });
+        }, 800);
       });
     });
   </script>
