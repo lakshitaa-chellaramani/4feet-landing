@@ -227,10 +227,30 @@
       padding: 160px 0 100px;
       overflow: hidden;
     }
+    .hero > .wrap {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
     .hero-inner {
       position: relative;
       z-index: 1;
-      max-width: 680px;
+      flex: 1;
+      max-width: 600px;
+    }
+    .hero-gif {
+      flex: 0 0 340px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-gif img {
+      width: 100%;
+      max-width: 340px;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(200, 149, 108, 0.15);
     }
     .hero-motto {
       font-family: 'Inter', sans-serif;
@@ -653,12 +673,17 @@
     /* ======================
        FAQ
        ====================== */
+    .faq {
+      text-align: center;
+    }
     .faq h2 {
       font-size: clamp(1.9rem, 4vw, 2.7rem);
       margin-bottom: 40px;
     }
     .faq-list {
       max-width: 700px;
+      margin: 0 auto;
+      text-align: left;
     }
     .faq-list details {
       border-bottom: 1px solid var(--border-warm);
@@ -770,11 +795,34 @@
     /* ======================
        RESPONSIVE
        ====================== */
+    @media (max-width: 960px) {
+      .hero > .wrap {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-inner {
+        max-width: 100%;
+      }
+      .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-gif {
+        flex: none;
+        width: 100%;
+        max-width: 320px;
+      }
+      .pet-radios {
+        justify-content: center;
+      }
+    }
+
     @media (max-width: 860px) {
       .problem-grid {
         grid-template-columns: 1fr;
         gap: 18px;
         max-width: 480px;
+        margin: 0 auto;
       }
       .problem-card:nth-child(2) {
         transform: translateX(20px);
@@ -793,6 +841,7 @@
       .modality-grid {
         grid-template-columns: 1fr;
         max-width: 480px;
+        margin: 0 auto;
       }
       .features-grid {
         grid-template-columns: 1fr 1fr;
@@ -802,9 +851,13 @@
     @media (max-width: 600px) {
       section { padding: 60px 0; }
       .hero { padding: 130px 0 70px; }
+      .hero-gif {
+        max-width: 260px;
+      }
       .features-grid {
         grid-template-columns: 1fr;
         max-width: 420px;
+        margin: 0 auto;
       }
       .wl-form { padding: 24px 20px; }
       .pet-radios { flex-wrap: wrap; gap: 10px; }
@@ -859,6 +912,11 @@
           <button type="submit" class="wl-btn">Join the Waitlist</button>
           <p class="wl-note">Early access members get 3 months free.</p>
         </form>
+      </div>
+
+      <!-- GIF SLOT: Replace the src with your GIF file -->
+      <div class="hero-gif reveal">
+        <img src="hero-pet.gif" alt="Cute pet animation">
       </div>
     </div>
   </section>
