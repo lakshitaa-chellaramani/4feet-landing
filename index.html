@@ -1171,7 +1171,7 @@
     })();
 
     /* Waitlist form submission to Google Sheets */
-    var GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+    var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2rHnuUj1Mvh5yw7vh-KGHTLrJZV1VJoEZ7TSTskVCWe--20qiqXNKS5Pms1a2gjyD/exec';
 
     document.querySelectorAll('form').forEach(function (form) {
       form.addEventListener('submit', function (e) {
@@ -1188,7 +1188,7 @@
         btn.textContent = 'Joining...';
         btn.disabled = true;
 
-        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbw2rHnuUj1Mvh5yw7vh-KGHTLrJZV1VJoEZ7TSTskVCWe--20qiqXNKS5Pms1a2gjyD/exec') {
           btn.textContent = "You're on the list!";
           btn.style.background = '#4a7c59';
           emailInput.value = '';
