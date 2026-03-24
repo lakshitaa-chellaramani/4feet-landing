@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4Feet — Understanding Animals on Their Terms</title>
-  <meta name="description" content="4Feet reads the behavioral signals your dog or cat is already sending — body language, vocalizations, movement patterns — and translates them into insight you can act on. Join the waitlist.">
-  <meta property="og:title" content="4Feet — Your Pet Speaks. Every Single Day.">
+  <title>4Feet | Let Your Love Reach Them</title>
+  <meta name="description" content="4Feet reads the behavioral signals your dog or cat is already sending. Body language, vocalizations, movement patterns. Real science, made lovable. Join the waitlist.">
+  <meta property="og:title" content="4Feet | Your Pet Talks to You Every Single Day">
   <meta property="og:description" content="AI-powered behavioral intelligence for dogs and cats. Grounded in real science, not gimmicks. Join the waitlist for early access and 3 months free premium.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://4feet.ai">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="4Feet — Your Pet Speaks. Every Single Day.">
+  <meta name="twitter:title" content="4Feet | Your Pet Talks to You Every Single Day">
   <meta name="twitter:description" content="AI-powered behavioral intelligence for dogs and cats. Grounded in real science.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- META PIXEL -->
-  <!-- GOOGLE TAG -->
+  <!-- META PIXEL: Replace with your pixel code -->
+  <!-- GOOGLE TAG: Replace with your gtag code -->
 
   <style>
-    /* =========================================
-       RESET & FOUNDATION
-       ========================================= */
+    /* ======================
+       RESET
+       ====================== */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -41,16 +41,16 @@
       --bg-card: #FAF7F2;
       --bg-highlight: #FDF8F0;
       --border-warm: #E8DFD3;
-      --border-faint: #EDE7DE;
       --white: #FFFFFF;
       --shadow-soft: 0 2px 12px rgba(26, 22, 17, 0.04);
       --shadow-card: 0 1px 3px rgba(26, 22, 17, 0.03), 0 6px 24px rgba(26, 22, 17, 0.06);
-      --shadow-elevated: 0 4px 16px rgba(26, 22, 17, 0.05), 0 12px 40px rgba(26, 22, 17, 0.08);
+      --shadow-lifted: 0 8px 30px rgba(26, 22, 17, 0.09);
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
       --radius-xl: 28px;
-      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     html {
@@ -61,1362 +61,1177 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-cream);
+      background: var(--bg-cream);
       color: var(--text-body);
       line-height: 1.7;
       font-size: 16px;
       overflow-x: hidden;
     }
 
-    /* =========================================
+    /* ======================
        TYPOGRAPHY
-       ========================================= */
+       ====================== */
     h1, h2, h3, h4 {
       font-family: 'Playfair Display', Georgia, serif;
       color: var(--text-dark);
-      line-height: 1.2;
-      font-weight: 500;
+      line-height: 1.22;
+      font-weight: 600;
     }
 
-    .italic-gold {
+    .ig {
       font-style: italic;
       color: var(--gold);
     }
 
-    .section-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: block;
+    a {
+      color: var(--gold-deep);
+      text-decoration: none;
     }
 
-    /* =========================================
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ======================
        LAYOUT
-       ========================================= */
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .container--narrow {
-      max-width: 760px;
+       ====================== */
+    .wrap {
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
     section {
-      padding: 100px 0;
+      padding: 80px 0;
     }
 
-    /* =========================================
-       REVEAL ANIMATIONS
-       ========================================= */
+    /* ======================
+       DECORATIVE PAWS
+       ====================== */
+    .paw-deco {
+      position: absolute;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .paw-deco svg {
+      fill: var(--gold);
+    }
+    .paw-deco:hover svg {
+      animation: paw-wiggle 0.4s var(--bounce);
+    }
+
+    @keyframes paw-wiggle {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-12deg); }
+      50% { transform: rotate(8deg); }
+      75% { transform: rotate(-4deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* ======================
+       REVEAL ANIMATION
+       ====================== */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     }
-
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .paw-deco:hover svg { animation: none; }
+      .step-num { animation: none !important; }
+      .card-tilt { transform: none !important; }
+    }
 
-    /* =========================================
+    /* ======================
        NAV
-       ========================================= */
+       ====================== */
     .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 20px 0;
-      transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+      padding: 16px 0;
+      transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
     }
-
     .nav.scrolled {
-      background: rgba(245, 240, 232, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 1px 0 var(--border-warm);
-      padding: 14px 0;
+      background: rgba(245, 240, 232, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 12px rgba(26, 22, 17, 0.06);
+      padding: 10px 0;
     }
-
-    .nav__inner {
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
     }
-
-    .nav__logo {
+    .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav__logo svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .nav__logo-text {
+      gap: 8px;
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.55rem;
+      font-weight: 700;
       color: var(--text-dark);
-    }
-
-    .nav__cta {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--gold-deep);
       text-decoration: none;
-      padding: 8px 20px;
-      border: 1.5px solid var(--gold);
-      border-radius: 100px;
-      transition: var(--transition);
-      letter-spacing: 0.01em;
     }
-
-    .nav__cta:hover {
-      background: var(--gold);
-      color: var(--white);
+    .nav-logo svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--gold);
+      transition: transform 0.3s var(--bounce);
     }
-
-    /* =========================================
-       HERO
-       ========================================= */
-    .hero {
-      padding: 160px 0 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .nav-logo:hover svg {
+      transform: rotate(-10deg) scale(1.12);
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -120px;
-      right: -80px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(200, 149, 108, 0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -60px;
-      left: -100px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(200, 149, 108, 0.06) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero__paw {
+    .nav-cta {
       display: inline-block;
-      margin-bottom: 32px;
-      opacity: 0.25;
-    }
-
-    .hero__paw svg {
-      width: 48px;
-      height: 48px;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-      font-weight: 500;
-      max-width: 700px;
-      margin: 0 auto 28px;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-    }
-
-    .hero__sub {
-      font-size: 1.08rem;
-      line-height: 1.75;
-      color: var(--text-body);
-      max-width: 560px;
-      margin: 0 auto 48px;
-      font-weight: 400;
-    }
-
-    .hero__form {
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
-    /* =========================================
-       WAITLIST FORM
-       ========================================= */
-    .waitlist-form {
-      text-align: left;
-    }
-
-    .waitlist-form__email-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .waitlist-form__input {
-      flex: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      padding: 14px 20px;
-      border: 1.5px solid var(--border-warm);
-      border-radius: 100px;
-      background: var(--white);
-      color: var(--text-dark);
-      outline: none;
-      transition: var(--transition);
-    }
-
-    .waitlist-form__input::placeholder {
-      color: var(--text-muted);
-    }
-
-    .waitlist-form__input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(200, 149, 108, 0.12);
-    }
-
-    .waitlist-form__submit {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 100px;
+      padding: 10px 26px;
       background: var(--gold);
       color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.25s var(--bounce);
+      border: none;
       cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-      letter-spacing: 0.01em;
     }
-
-    .waitlist-form__submit:hover {
+    .nav-cta:hover {
       background: var(--gold-deep);
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(200, 149, 108, 0.3);
     }
 
-    .waitlist-form__radios {
+    /* ======================
+       HERO
+       ====================== */
+    .hero {
+      position: relative;
+      padding: 160px 0 100px;
+      overflow: hidden;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .hero-motto {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+      margin-bottom: 22px;
+      line-height: 1.15;
+    }
+    .hero-sub {
+      font-size: 1.12rem;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 38px;
+      max-width: 560px;
+    }
+
+    /* Wavy blob behind the hero */
+    .hero-blob {
+      position: absolute;
+      top: -60px;
+      right: -140px;
+      width: 520px;
+      height: 520px;
+      border-radius: 58% 42% 65% 35% / 45% 55% 45% 55%;
+      background: linear-gradient(135deg, rgba(200, 149, 108, 0.08), rgba(200, 149, 108, 0.03));
+      z-index: 0;
+      animation: blob-morph 18s ease-in-out infinite;
+    }
+    @keyframes blob-morph {
+      0%, 100% { border-radius: 58% 42% 65% 35% / 45% 55% 45% 55%; }
+      33% { border-radius: 45% 55% 40% 60% / 55% 40% 60% 45%; }
+      66% { border-radius: 60% 40% 55% 45% / 40% 60% 50% 50%; }
+    }
+
+    /* ======================
+       WAITLIST FORM
+       ====================== */
+    .wl-form {
+      background: var(--white);
+      border: 1px solid var(--border-warm);
+      border-radius: var(--radius-lg);
+      padding: 30px 28px;
+      max-width: 480px;
+      box-shadow: var(--shadow-card);
+    }
+    .wl-form label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .wl-form input[type="email"] {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--border-warm);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--text-dark);
+      background: var(--bg-highlight);
+      transition: border-color 0.2s;
+      margin-bottom: 16px;
+    }
+    .wl-form input[type="email"]:focus {
+      border-color: var(--gold);
+      outline: none;
+    }
+    .wl-form input[type="email"]::placeholder {
+      color: var(--text-muted);
+    }
+    .pet-radios {
       display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 8px;
+      gap: 14px;
+      margin-bottom: 20px;
     }
-
-    .waitlist-form__radio-label {
+    .pet-radios label {
       display: flex;
       align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      font-size: 0.88rem;
+      gap: 6px;
+      font-size: 0.92rem;
+      font-weight: 500;
       color: var(--text-body);
-      font-weight: 400;
-    }
-
-    .waitlist-form__radio-label input[type="radio"] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 17px;
-      height: 17px;
-      border: 1.5px solid var(--border-warm);
-      border-radius: 50%;
-      background: var(--white);
       cursor: pointer;
-      position: relative;
-      transition: var(--transition);
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border-warm);
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 0;
     }
-
-    .waitlist-form__radio-label input[type="radio"]:checked {
+    .pet-radios input[type="radio"] {
+      accent-color: var(--gold);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+    .pet-radios label:has(input:checked) {
       border-color: var(--gold);
+      background: var(--gold-light);
     }
-
-    .waitlist-form__radio-label input[type="radio"]:checked::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+    .wl-btn {
+      width: 100%;
+      padding: 14px 24px;
       background: var(--gold);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s var(--bounce);
     }
-
-    .waitlist-form__note {
-      text-align: center;
+    .wl-btn:hover {
+      background: var(--gold-deep);
+      transform: translateY(-1px);
+    }
+    .wl-btn:active {
+      transform: translateY(0);
+    }
+    .wl-note {
       font-size: 0.82rem;
       color: var(--text-muted);
-      margin-top: 16px;
-      font-weight: 400;
+      margin-top: 14px;
+      text-align: center;
     }
 
-    /* =========================================
+    /* ======================
        PROBLEM SECTION
-       ========================================= */
+       ====================== */
     .problem {
       background: var(--bg-highlight);
     }
-
-    .problem__heading {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-bottom: 52px;
-      text-align: center;
+    .problem h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 48px;
+      max-width: 460px;
     }
-
-    .problem__grid {
+    .problem-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 24px;
     }
-
-    .problem__card {
+    .problem-card {
       background: var(--white);
       border: 1px solid var(--border-warm);
-      border-radius: var(--radius-lg);
-      padding: 36px 30px;
-      transition: var(--transition);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.35s var(--bounce), box-shadow 0.35s;
+      position: relative;
     }
-
-    .problem__card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card);
+    .problem-card:nth-child(2) {
+      transform: translateY(18px);
     }
-
-    .problem__card-icon {
+    .problem-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lifted);
+    }
+    .problem-card:nth-child(2):hover {
+      transform: translateY(14px);
+    }
+    .problem-card .card-icon {
       width: 44px;
       height: 44px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background: var(--gold-light);
       border-radius: 12px;
-    }
-
-    .problem__card-icon svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .problem__card p {
-      font-size: 0.98rem;
-      line-height: 1.7;
-      color: var(--text-body);
-    }
-
-    .problem__card p strong {
-      color: var(--text-dark);
-      font-weight: 600;
-    }
-
-    /* =========================================
-       SCIENCE / MODALITIES
-       ========================================= */
-    .science__heading {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-bottom: 52px;
-      text-align: center;
-    }
-
-    .science__grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 36px;
-    }
-
-    .modality-card {
-      background: var(--white);
-      border: 1px solid var(--border-warm);
-      border-radius: var(--radius-lg);
-      padding: 36px 32px;
-      transition: var(--transition);
-    }
-
-    .modality-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card);
-    }
-
-    .modality-card__header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .modality-card__label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .modality-card__icon {
-      width: 38px;
-      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--gold-light);
-      border-radius: 10px;
+      margin-bottom: 16px;
     }
-
-    .modality-card__icon svg {
-      width: 20px;
-      height: 20px;
+    .problem-card .card-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--gold);
     }
-
-    .modality-card__name {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--gold-deep);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .modality-card__pct {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      line-height: 1;
-    }
-
-    .modality-card__desc {
-      font-size: 0.92rem;
+    .problem-card p {
+      font-size: 0.96rem;
       line-height: 1.65;
       color: var(--text-body);
     }
 
-    .science__note {
-      text-align: center;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin: 0 auto;
-      font-style: italic;
-    }
-
-    /* =========================================
+    /* ======================
        HOW IT WORKS
-       ========================================= */
-    .how {
-      background: var(--bg-highlight);
+       ====================== */
+    .how h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 56px;
     }
-
-    .how__heading {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-bottom: 64px;
-      text-align: center;
-    }
-
-    .how__steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+    .steps {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
       position: relative;
     }
-
-    .how__steps::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: calc(16.667% + 28px);
-      right: calc(16.667% + 28px);
-      height: 1.5px;
-      background: linear-gradient(90deg, var(--gold), var(--border-warm) 50%, var(--gold));
-      opacity: 0.5;
-    }
-
-    .how__step {
+    .step {
+      flex: 1;
       text-align: center;
-      padding: 0 24px;
       position: relative;
     }
-
-    .how__step-number {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
+    .step-num {
+      width: 52px;
+      height: 52px;
       background: var(--gold);
       color: var(--white);
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
-      font-weight: 600;
+      font-weight: 700;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 28px;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 4px 16px rgba(200, 149, 108, 0.25);
+      margin-bottom: 18px;
+      animation: gentle-bounce 3s ease-in-out infinite;
+    }
+    .step:nth-child(2) .step-num { animation-delay: 0.5s; }
+    .step:nth-child(3) .step-num { animation-delay: 1s; }
+
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
-    .how__step-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      margin-bottom: 14px;
+    .step h3 {
+      font-size: 1.18rem;
+      margin-bottom: 8px;
     }
-
-    .how__step-desc {
+    .step p {
       font-size: 0.92rem;
-      line-height: 1.7;
-      color: var(--text-body);
-      max-width: 280px;
+      color: var(--text-muted);
+      max-width: 260px;
       margin: 0 auto;
     }
 
-    /* =========================================
-       FEATURES
-       ========================================= */
-    .features__heading {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-bottom: 52px;
-      text-align: center;
+    /* Dotted connector between steps */
+    .step-connector {
+      position: absolute;
+      top: 26px;
+      left: calc(33.33% + 26px);
+      width: calc(33.33% - 52px);
+      height: 2px;
+      background-image: repeating-linear-gradient(
+        to right,
+        var(--gold) 0,
+        var(--gold) 6px,
+        transparent 6px,
+        transparent 14px
+      );
+      opacity: 0.35;
+    }
+    .step-connector-2 {
+      left: calc(66.66% + 26px);
     }
 
-    .features__grid {
+    /* ======================
+       WHAT WE READ (SCIENCE)
+       ====================== */
+    .science {
+      background: var(--bg-highlight);
+    }
+    .science h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 48px;
+    }
+    .modality-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
     }
-
-    .feature-card {
+    .modality-card {
       background: var(--white);
       border: 1px solid var(--border-warm);
       border-radius: var(--radius-md);
-      padding: 32px 28px;
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
+      padding: 28px 26px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s var(--bounce), box-shadow 0.3s;
     }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--gold);
-      border-radius: 0 3px 3px 0;
-      opacity: 0.6;
-      transition: var(--transition);
+    .modality-card:hover {
+      transform: translateY(-3px) rotate(-0.3deg);
+      box-shadow: var(--shadow-lifted);
     }
-
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card);
-    }
-
-    .feature-card:hover::before {
-      opacity: 1;
-    }
-
-    .feature-card__title {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: var(--text-dark);
+    .modality-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 10px;
     }
-
-    .feature-card__desc {
+    .modality-header h3 {
+      font-size: 1.12rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .modality-header h3 svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--gold);
+    }
+    .modality-pct {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .modality-card p {
       font-size: 0.9rem;
-      line-height: 1.65;
-      color: var(--text-body);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .science-note {
+      margin-top: 28px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
     }
 
-    /* =========================================
-       PHILOSOPHY
-       ========================================= */
+    /* ======================
+       FEATURES
+       ====================== */
+    .features h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .feat-card {
+      background: var(--white);
+      border: 1px solid var(--border-warm);
+      border-radius: var(--radius-md);
+      padding: 26px 22px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.35s var(--bounce), box-shadow 0.3s;
+    }
+    .feat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lifted);
+    }
+    /* Slight visual variety */
+    .feat-card:nth-child(1) { transform: rotate(-0.6deg); }
+    .feat-card:nth-child(1):hover { transform: rotate(-0.6deg) translateY(-4px); }
+    .feat-card:nth-child(4) { transform: rotate(0.5deg); }
+    .feat-card:nth-child(4):hover { transform: rotate(0.5deg) translateY(-4px); }
+    .feat-card:nth-child(6) { transform: rotate(-0.4deg); }
+    .feat-card:nth-child(6):hover { transform: rotate(-0.4deg) translateY(-4px); }
+
+    .feat-card h3 {
+      font-size: 1.06rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feat-card h3 svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--gold);
+      flex-shrink: 0;
+    }
+    .feat-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ======================
+       PHILOSOPHY QUOTE
+       ====================== */
     .philosophy {
       background: var(--bg-card);
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      padding: 110px 0;
+      padding: 90px 0;
     }
-
-    .philosophy__deco {
-      display: inline-block;
-      margin-bottom: 32px;
-      opacity: 0.2;
+    .philosophy-wave-top,
+    .philosophy-wave-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 40px;
+      overflow: hidden;
     }
-
-    .philosophy__deco svg {
-      width: 36px;
-      height: 36px;
+    .philosophy-wave-top { top: -1px; }
+    .philosophy-wave-bottom { bottom: -1px; transform: rotate(180deg); }
+    .philosophy-wave-top svg,
+    .philosophy-wave-bottom svg {
+      display: block;
+      width: 100%;
+      height: 40px;
     }
-
-    .philosophy__quote {
+    .philosophy blockquote {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.3rem, 3vw, 1.85rem);
       font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
       color: var(--text-dark);
       line-height: 1.55;
-      max-width: 640px;
-      margin: 0 auto 28px;
-      font-weight: 400;
+      max-width: 680px;
+      margin: 0 auto 18px;
+    }
+    .philosophy cite {
+      font-family: 'Playfair Display', serif;
+      font-style: normal;
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 600;
     }
 
-    .philosophy__attribution {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-    }
-
-    .philosophy__attribution::before {
-      content: '\2014\00a0';
-    }
-
-    /* =========================================
+    /* ======================
        FAQ
-       ========================================= */
-    .faq__heading {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-bottom: 48px;
-      text-align: center;
+       ====================== */
+    .faq h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 40px;
     }
-
-    .faq__list {
-      max-width: 720px;
-      margin: 0 auto;
+    .faq-list {
+      max-width: 700px;
     }
-
-    .faq__item {
+    .faq-list details {
       border-bottom: 1px solid var(--border-warm);
     }
-
-    .faq__item:first-child {
+    .faq-list details:first-child {
       border-top: 1px solid var(--border-warm);
     }
-
-    .faq__item details {
-      padding: 0;
-    }
-
-    .faq__item summary {
-      list-style: none;
+    .faq-list summary {
+      padding: 20px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text-dark);
       cursor: pointer;
-      padding: 22px 0;
+      list-style: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      transition: var(--transition);
-      -webkit-user-select: none;
-      user-select: none;
+      transition: color 0.2s;
     }
-
-    .faq__item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq__item summary::marker {
-      display: none;
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
       content: '';
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg);
+      transition: transform 0.25s;
+      flex-shrink: 0;
     }
-
-    .faq__item summary:hover {
+    .faq-list details[open] summary::after {
+      transform: rotate(-135deg);
+    }
+    .faq-list summary:hover {
       color: var(--gold-deep);
     }
-
-    .faq__chevron {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      transition: transform 0.3s ease;
-      color: var(--gold);
-    }
-
-    .faq__item details[open] .faq__chevron {
-      transform: rotate(180deg);
-    }
-
-    .faq__answer {
-      padding: 0 0 24px;
-      font-size: 0.93rem;
-      line-height: 1.75;
+    .faq-answer {
+      padding: 0 0 22px;
+      font-size: 0.94rem;
       color: var(--text-body);
+      line-height: 1.7;
       max-width: 620px;
     }
 
-    /* =========================================
+    /* ======================
        FINAL CTA
-       ========================================= */
-    .cta-final {
-      background: var(--bg-highlight);
+       ====================== */
+    .final-cta {
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      padding: 80px 0 90px;
     }
-
-    .cta-final::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(200, 149, 108, 0.07) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
+    .final-cta h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 36px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .cta-final__heading {
-      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-      max-width: 600px;
-      margin: 0 auto 40px;
-      position: relative;
-    }
-
-    .cta-final__form {
-      max-width: 480px;
+    .final-cta .wl-form {
       margin: 0 auto;
-      position: relative;
     }
-
-    .cta-final__note {
+    .final-cta .bottom-note {
       font-size: 0.84rem;
       color: var(--text-muted);
-      margin-top: 20px;
+      margin-top: 18px;
     }
 
-    /* =========================================
+    /* ======================
        FOOTER
-       ========================================= */
+       ====================== */
     .footer {
       background: var(--bg-card);
-      padding: 52px 0 44px;
+      border-top: 1px solid var(--border-warm);
+      padding: 48px 0 36px;
       text-align: center;
-      border-top: 1px solid var(--border-faint);
     }
-
-    .footer__logo {
+    .footer-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.4rem;
+      font-weight: 700;
       color: var(--gold);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-
-    .footer__tagline {
-      font-size: 0.85rem;
+    .footer-motto {
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin-bottom: 20px;
       font-style: italic;
     }
-
-    .footer__links {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-bottom: 24px;
+    .footer-links {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
     }
-
-    .footer__links a {
-      font-size: 0.82rem;
+    .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
-      transition: var(--transition);
+      transition: color 0.2s;
     }
-
-    .footer__links a:hover {
-      color: var(--gold-deep);
-    }
-
-    .footer__copy {
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
       font-size: 0.78rem;
       color: var(--text-muted);
       opacity: 0.7;
     }
 
-    /* =========================================
+    /* ======================
        RESPONSIVE
-       ========================================= */
-    @media (max-width: 1024px) {
-      .features__grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 72px 0;
-      }
-
-      .hero {
-        padding: 130px 0 72px;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero__sub {
-        font-size: 1rem;
-      }
-
-      .waitlist-form__email-row {
-        flex-direction: column;
-      }
-
-      .waitlist-form__submit {
-        width: 100%;
-        padding: 15px 28px;
-      }
-
-      .problem__grid {
+       ====================== */
+    @media (max-width: 860px) {
+      .problem-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 18px;
+        max-width: 480px;
       }
-
-      .science__grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+      .problem-card:nth-child(2) {
+        transform: translateX(20px);
       }
-
-      .how__steps {
-        grid-template-columns: 1fr;
-        gap: 48px;
+      .problem-card:nth-child(2):hover {
+        transform: translateX(20px) translateY(-4px);
       }
-
-      .how__steps::before {
-        display: none;
-      }
-
-      .features__grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .philosophy {
-        padding: 80px 0;
-      }
-
-      .philosophy__quote {
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (max-width: 375px) {
-      .container,
-      .container--narrow {
-        padding: 0 18px;
-      }
-
-      .hero h1 {
-        font-size: 1.75rem;
-      }
-
-      .waitlist-form__radios {
+      .steps {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 36px;
+      }
+      .step-connector, .step-connector-2 {
+        display: none;
+      }
+      .modality-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+      }
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
-    /* =========================================
-       ACCESSIBILITY
-       ========================================= */
-    :focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
+    @media (max-width: 600px) {
+      section { padding: 60px 0; }
+      .hero { padding: 130px 0 70px; }
+      .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
       }
-
-      html {
-        scroll-behavior: auto;
-      }
+      .wl-form { padding: 24px 20px; }
+      .pet-radios { flex-wrap: wrap; gap: 10px; }
+      .hero-blob { width: 340px; height: 340px; right: -100px; top: -30px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==========================================
-       NAV
-       ========================================== -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#" class="nav__logo" aria-label="4Feet home">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="10" cy="7.5" rx="3.2" ry="4" fill="#C8956C" opacity="0.85"/>
-          <ellipse cx="22" cy="7.5" rx="3.2" ry="4" fill="#C8956C" opacity="0.85"/>
-          <ellipse cx="5.5" cy="14.5" rx="2.8" ry="3.6" fill="#C8956C" opacity="0.7"/>
-          <ellipse cx="26.5" cy="14.5" rx="2.8" ry="3.6" fill="#C8956C" opacity="0.7"/>
-          <ellipse cx="16" cy="21" rx="6.5" ry="5.8" fill="#C8956C"/>
-        </svg>
-        <span class="nav__logo-text">4Feet</span>
+  <!-- ========== NAV ========== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="4Feet home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.58 2 4 4.69 4 8c0 2.5 1.5 4.5 3.5 5.5C6.5 14.5 6 16 6 17.5 6 20 8.69 22 12 22s6-2 6-4.5c0-1.5-.5-3-1.5-4C18.5 12.5 20 10.5 20 8c0-3.31-3.58-6-8-6zm-4.5 5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3-2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
+        4Feet
       </a>
-      <a href="#waitlist" class="nav__cta">Join Waitlist</a>
+      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
     </div>
   </nav>
 
-  <!-- ==========================================
-       HERO
-       ========================================== -->
+  <!-- ========== HERO ========== -->
   <section class="hero" id="waitlist">
-    <div class="container--narrow">
-      <div class="hero__paw reveal">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="15" cy="11" rx="4.8" ry="6" fill="#C8956C"/>
-          <ellipse cx="33" cy="11" rx="4.8" ry="6" fill="#C8956C"/>
-          <ellipse cx="7.5" cy="22" rx="4.2" ry="5.4" fill="#C8956C"/>
-          <ellipse cx="40.5" cy="22" rx="4.2" ry="5.4" fill="#C8956C"/>
-          <ellipse cx="24" cy="32" rx="10" ry="8.8" fill="#C8956C"/>
-        </svg>
+    <div class="wrap">
+      <!-- decorative paw prints -->
+      <div class="paw-deco" style="top: 80px; right: 12%; transform: rotate(22deg);" aria-hidden="true">
+        <svg width="38" height="38" viewBox="0 0 24 24"><path d="M12 2C7.58 2 4 4.69 4 8c0 2.5 1.5 4.5 3.5 5.5C6.5 14.5 6 16 6 17.5 6 20 8.69 22 12 22s6-2 6-4.5c0-1.5-.5-3-1.5-4C18.5 12.5 20 10.5 20 8c0-3.31-3.58-6-8-6zm-4.5 5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3-2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
+      </div>
+      <div class="paw-deco" style="bottom: 40px; right: 30%; transform: rotate(-15deg); opacity: 0.05;" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2C7.58 2 4 4.69 4 8c0 2.5 1.5 4.5 3.5 5.5C6.5 14.5 6 16 6 17.5 6 20 8.69 22 12 22s6-2 6-4.5c0-1.5-.5-3-1.5-4C18.5 12.5 20 10.5 20 8c0-3.31-3.58-6-8-6zm-4.5 5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3-2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
+      </div>
+      <div class="paw-deco" style="top: 200px; left: 70%; transform: rotate(40deg); opacity: 0.06;" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2C7.58 2 4 4.69 4 8c0 2.5 1.5 4.5 3.5 5.5C6.5 14.5 6 16 6 17.5 6 20 8.69 22 12 22s6-2 6-4.5c0-1.5-.5-3-1.5-4C18.5 12.5 20 10.5 20 8c0-3.31-3.58-6-8-6zm-4.5 5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3-2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm3 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
       </div>
 
-      <h1 class="reveal">Your pet <span class="italic-gold">speaks.</span><br>Every single day.</h1>
+      <div class="hero-blob" aria-hidden="true"></div>
 
-      <p class="hero__sub reveal reveal-delay-1">4Feet reads the behavioral signals your dog or cat is already sending&thinsp;&mdash;&thinsp;body language, vocalizations, movement patterns&thinsp;&mdash;&thinsp;and translates them into insight you can act on. Not a gimmick. Real science.</p>
+      <div class="hero-inner reveal">
+        <p class="hero-motto">LET YOUR LOVE REACH THEM</p>
+        <h1>Your pet talks to you <span class="ig">every single day.</span></h1>
+        <p class="hero-sub">4Feet reads what your dog or cat is really saying. Body language, sounds, little quirks. All decoded by AI, backed by real behavioral science. No gimmicks. Just understanding.</p>
 
-      <div class="hero__form reveal reveal-delay-2">
-        <form class="waitlist-form" action="#" method="post">
-          <div class="waitlist-form__radios">
-            <label class="waitlist-form__radio-label">
-              <input type="radio" name="pet_type" value="dog" checked> Dog
-            </label>
-            <label class="waitlist-form__radio-label">
-              <input type="radio" name="pet_type" value="cat"> Cat
-            </label>
-            <label class="waitlist-form__radio-label">
-              <input type="radio" name="pet_type" value="both"> Both
-            </label>
+        <form class="wl-form" aria-label="Join the waitlist">
+          <label for="hero-email">Your email</label>
+          <input type="email" id="hero-email" name="email" placeholder="you@email.com" required autocomplete="email">
+
+          <div class="pet-radios" role="radiogroup" aria-label="What kind of pet do you have?">
+            <label><input type="radio" name="pet-hero" value="Dog" checked> Dog</label>
+            <label><input type="radio" name="pet-hero" value="Cat"> Cat</label>
+            <label><input type="radio" name="pet-hero" value="Both"> Both</label>
           </div>
-          <div class="waitlist-form__email-row">
-            <input type="email" class="waitlist-form__input" placeholder="Your email address" required aria-label="Email address">
-            <button type="submit" class="waitlist-form__submit">Join the Waitlist</button>
-          </div>
-          <p class="waitlist-form__note">Early access members get 3 months free premium.</p>
+
+          <button type="submit" class="wl-btn">Join the Waitlist</button>
+          <p class="wl-note">Early access members get 3 months free.</p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       THE PROBLEM
-       ========================================== -->
-  <section class="problem" id="problem">
-    <div class="container">
-      <span class="section-label reveal">The Challenge</span>
-      <h2 class="problem__heading reveal">Most of us are <span class="italic-gold">guessing.</span></h2>
+  <!-- ========== PROBLEM ========== -->
+  <section class="problem">
+    <div class="wrap">
+      <h2 class="reveal">We get it wrong. <span class="ig">A lot.</span></h2>
 
-      <div class="problem__grid">
-        <div class="problem__card reveal reveal-delay-1">
-          <div class="problem__card-icon">
-            <!-- yawn / dog face icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"/>
-              <circle cx="8.5" cy="10" r="0.8" fill="#C8956C" stroke="none"/>
-              <circle cx="15.5" cy="10" r="0.8" fill="#C8956C" stroke="none"/>
-              <path d="M8.5 14.5c1 1.5 5.5 1.5 7 0"/>
-            </svg>
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-9.5c0-.83-.67-1.5-1.5-1.5S7 9.67 7 10.5 7.67 12 8.5 12s1.5-.67 1.5-1.5zm7 0c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5z"/></svg>
           </div>
-          <p><strong>Your dog yawns.</strong> Tired? No&thinsp;&mdash;&thinsp;stressed. 60% of owners misread this signal.</p>
+          <p>Your dog yawns. You think: sleepy. Science says: stressed. Totally different thing.</p>
         </div>
 
-        <div class="problem__card reveal reveal-delay-2">
-          <div class="problem__card-icon">
-            <!-- cat belly icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 10l2-5h2l1 3"/>
-              <path d="M20 10l-2-5h-2l-1 3"/>
-              <ellipse cx="12" cy="14" rx="7.5" ry="5.5"/>
-              <path d="M9.5 12.5v3M12 12v3.5M14.5 12.5v3"/>
-            </svg>
+        <div class="problem-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4.5 9.5C4.5 5.36 7.86 2 12 2s7.5 3.36 7.5 7.5c0 5.25-7.5 12.5-7.5 12.5S4.5 14.75 4.5 9.5zM12 12c1.38 0 2.5-1.12 2.5-2.5S13.38 7 12 7s-2.5 1.12-2.5 2.5S10.62 12 12 12z"/></svg>
           </div>
-          <p><strong>Your cat shows her belly.</strong> An invitation? Usually not. It is a trust display, not a touch request.</p>
+          <p>Cat shows belly. You reach in. Cat attacks. Turns out that was a trust display, not an invitation.</p>
         </div>
 
-        <div class="problem__card reveal reveal-delay-3">
-          <div class="problem__card-icon">
-            <!-- tail wag icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 18c0-4 3-8 8-10"/>
-              <path d="M14 8c2-3 5-4 6-3"/>
-              <path d="M14 8c1.5-2.5 1-5 0-6"/>
-              <path d="M14 8c3-1 5.5 0 6 1.5"/>
-            </svg>
+        <div class="problem-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M18 16v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-6 6c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/></svg>
           </div>
-          <p><strong>Tail wagging means happy, right?</strong> It depends on direction, speed, and height. Five different meanings.</p>
+          <p>Tail wagging = happy? Depends on the direction, speed, and height. There are five meanings. Five!</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       WHAT PAWSENSE READS
-       ========================================== -->
-  <section class="science" id="science">
-    <div class="container">
-      <span class="section-label reveal">The Science</span>
-      <h2 class="science__heading reveal">Four ways we <span class="italic-gold">listen.</span></h2>
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="how">
+    <div class="wrap">
+      <h2 class="reveal">Three steps. <span class="ig">That's it.</span></h2>
 
-      <div class="science__grid">
-        <!-- Visual -->
-        <div class="modality-card reveal reveal-delay-1">
-          <div class="modality-card__header">
-            <div class="modality-card__label">
-              <div class="modality-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
-              </div>
-              <span class="modality-card__name">Visual</span>
-            </div>
-            <span class="modality-card__pct">38%</span>
-          </div>
-          <p class="modality-card__desc">Body posture, ear position, tail carriage, facial tension, gait pattern</p>
+      <div class="steps reveal" role="list">
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="step-connector step-connector-2" aria-hidden="true"></div>
+
+        <div class="step" role="listitem">
+          <div class="step-num" aria-hidden="true">1</div>
+          <h3>Point your phone</h3>
+          <p>Aim your camera at your pet for a quick scan. 5 to 30 seconds.</p>
         </div>
 
-        <!-- Audio -->
-        <div class="modality-card reveal reveal-delay-2">
-          <div class="modality-card__header">
-            <div class="modality-card__label">
-              <div class="modality-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3v18"/>
-                  <path d="M8 7v10"/>
-                  <path d="M4 10v4"/>
-                  <path d="M16 7v10"/>
-                  <path d="M20 10v4"/>
-                </svg>
-              </div>
-              <span class="modality-card__name">Audio</span>
-            </div>
-            <span class="modality-card__pct">28%</span>
-          </div>
-          <p class="modality-card__desc">Bark pitch and duration, whine, growl, purr, chirp, hiss frequency</p>
+        <div class="step" role="listitem">
+          <div class="step-num" aria-hidden="true">2</div>
+          <h3>We decode it</h3>
+          <p>Our AI checks thousands of behavioral patterns from real research. Personalized to your specific pet.</p>
         </div>
 
-        <!-- Motion -->
-        <div class="modality-card reveal reveal-delay-3">
-          <div class="modality-card__header">
-            <div class="modality-card__label">
-              <div class="modality-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                </svg>
-              </div>
-              <span class="modality-card__name">Motion</span>
-            </div>
-            <span class="modality-card__pct">20%</span>
-          </div>
-          <p class="modality-card__desc">Activity levels, restlessness, sleep quality via collar accelerometer</p>
-        </div>
-
-        <!-- Physiological -->
-        <div class="modality-card reveal reveal-delay-4">
-          <div class="modality-card__header">
-            <div class="modality-card__label">
-              <div class="modality-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-                </svg>
-              </div>
-              <span class="modality-card__name">Physiological</span>
-            </div>
-            <span class="modality-card__pct">14%</span>
-          </div>
-          <p class="modality-card__desc">Heart rate variability, respiration, temperature via smart collar</p>
-        </div>
-      </div>
-
-      <p class="science__note reveal">The app works fully without hardware. The smart collar adds precision, not access.</p>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       HOW IT WORKS
-       ========================================== -->
-  <section class="how" id="how">
-    <div class="container">
-      <span class="section-label reveal">The Experience</span>
-      <h2 class="how__heading reveal">Three steps. <span class="italic-gold">No guesswork.</span></h2>
-
-      <div class="how__steps">
-        <div class="how__step reveal reveal-delay-1">
-          <div class="how__step-number">1</div>
-          <h3 class="how__step-title">Observe</h3>
-          <p class="how__step-desc">Point your phone at your pet for a quick scan. Camera and microphone capture behavioral signals in real-time.</p>
-        </div>
-
-        <div class="how__step reveal reveal-delay-2">
-          <div class="how__step-number">2</div>
-          <h3 class="how__step-title">Decode</h3>
-          <p class="how__step-desc">Our AI cross-references thousands of scientifically documented behavioral patterns, personalized to your specific pet.</p>
-        </div>
-
-        <div class="how__step reveal reveal-delay-3">
-          <div class="how__step-number">3</div>
-          <h3 class="how__step-title">Understand</h3>
-          <p class="how__step-desc">Get a clear reading: emotional state, stress level, what they want&thinsp;&mdash;&thinsp;plus guidance on what to do next.</p>
+        <div class="step" role="listitem">
+          <div class="step-num" aria-hidden="true">3</div>
+          <h3>You understand</h3>
+          <p>Get a clear read on how they're feeling, what they want, and what to do about it.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       FEATURES
-       ========================================== -->
-  <section class="features" id="features">
-    <div class="container">
-      <span class="section-label reveal">What You Get</span>
-      <h2 class="features__heading reveal">Built for <span class="italic-gold">real life,</span> not demos.</h2>
+  <!-- ========== SCIENCE ========== -->
+  <section class="science">
+    <div class="wrap">
+      <h2 class="reveal">What we're <span class="ig">actually</span> looking at</h2>
 
-      <div class="features__grid">
-        <div class="feature-card reveal reveal-delay-1">
-          <h3 class="feature-card__title">Live Behavior Scan</h3>
-          <p class="feature-card__desc">Immediate reading within 4 seconds. Point, scan, understand.</p>
+      <div class="modality-grid">
+        <div class="modality-card reveal">
+          <div class="modality-header">
+            <h3>
+              <!-- eye icon -->
+              <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              Eyes &amp; Body
+            </h3>
+            <span class="modality-pct">38%</span>
+          </div>
+          <p>Posture, ear position, tail carriage, facial tension, the way they walk.</p>
         </div>
 
-        <div class="feature-card reveal reveal-delay-2">
-          <h3 class="feature-card__title">Behavioral Journal</h3>
-          <p class="feature-card__desc">Timeline with trend detection and anomaly flagging over days, weeks, months.</p>
+        <div class="modality-card reveal">
+          <div class="modality-header">
+            <h3>
+              <!-- sound wave icon -->
+              <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+              Sounds
+            </h3>
+            <span class="modality-pct">28%</span>
+          </div>
+          <p>Bark pitch, meow patterns, purrs, growls, that weird chirpy thing cats do.</p>
         </div>
 
-        <div class="feature-card reveal reveal-delay-3">
-          <h3 class="feature-card__title">Health Alerts</h3>
-          <p class="feature-card__desc">Detects deviations that may indicate pain or illness before you notice them.</p>
+        <div class="modality-card reveal">
+          <div class="modality-header">
+            <h3>
+              <!-- activity icon -->
+              <svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg>
+              Movement
+            </h3>
+            <span class="modality-pct">20%</span>
+          </div>
+          <p>How active they are, sleep patterns, restlessness (via optional smart collar).</p>
         </div>
 
-        <div class="feature-card reveal reveal-delay-4">
-          <h3 class="feature-card__title">Pet Profiles</h3>
-          <p class="feature-card__desc">Learns your specific pet's baseline over time. Every pet is different.</p>
+        <div class="modality-card reveal">
+          <div class="modality-header">
+            <h3>
+              <!-- heart icon -->
+              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              Vitals
+            </h3>
+            <span class="modality-pct">14%</span>
+          </div>
+          <p>Heart rate, breathing, temperature (via optional smart collar).</p>
+        </div>
+      </div>
+
+      <p class="science-note reveal">Works perfectly with just your phone. The smart collar adds bonus precision.</p>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES ========== -->
+  <section class="features">
+    <div class="wrap">
+      <h2 class="reveal">Everything you <span class="ig">actually</span> need</h2>
+
+      <div class="features-grid">
+        <div class="feat-card reveal">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+            Live Scan
+          </h3>
+          <p>Point. Scan. Know. Under 4 seconds.</p>
         </div>
 
-        <div class="feature-card reveal reveal-delay-5">
-          <h3 class="feature-card__title">Vet Reports</h3>
-          <p class="feature-card__desc">Structured behavioral summary, shareable as PDF. Your vet will thank you.</p>
+        <div class="feat-card reveal">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+            Pet Journal
+          </h3>
+          <p>Every scan logged automatically. Spot trends over time.</p>
         </div>
 
-        <div class="feature-card reveal reveal-delay-6">
-          <h3 class="feature-card__title">Guidance Engine</h3>
-          <p class="feature-card__desc">What to do, what not to do, and why. Actionable after every scan.</p>
+        <div class="feat-card reveal">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M18 16v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-6 6c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/></svg>
+            Health Alerts
+          </h3>
+          <p>Something seems off? We'll let you know before it gets serious.</p>
+        </div>
+
+        <div class="feat-card reveal">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+            Your Pet's Profile
+          </h3>
+          <p>4Feet learns YOUR pet's unique personality and baseline.</p>
+        </div>
+
+        <div class="feat-card reveal">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            Vet Reports
+          </h3>
+          <p>One-tap PDF report to share with your vet. No more trying to describe what happened.</p>
+        </div>
+
+        <div class="feat-card reveal">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+            Smart Guidance
+          </h3>
+          <p>After every scan: what to do, what not to do, and why.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       PHILOSOPHY
-       ========================================== -->
+  <!-- ========== PHILOSOPHY ========== -->
   <section class="philosophy">
-    <div class="container--narrow">
-      <div class="philosophy__deco reveal">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="15" cy="11" rx="4.8" ry="6" fill="#C8956C"/>
-          <ellipse cx="33" cy="11" rx="4.8" ry="6" fill="#C8956C"/>
-          <ellipse cx="7.5" cy="22" rx="4.2" ry="5.4" fill="#C8956C"/>
-          <ellipse cx="40.5" cy="22" rx="4.2" ry="5.4" fill="#C8956C"/>
-          <ellipse cx="24" cy="32" rx="10" ry="8.8" fill="#C8956C"/>
-        </svg>
-      </div>
-
-      <blockquote class="philosophy__quote reveal">
-        The goal is not to make pets seem human. It is to make humans better at being pets' companions.
+    <div class="philosophy-wave-top" aria-hidden="true">
+      <svg viewBox="0 0 1440 40" preserveAspectRatio="none">
+        <path fill="#F5F0E8" d="M0,0 C360,40 1080,0 1440,30 L1440,0 L0,0 Z"/>
+      </svg>
+    </div>
+    <div class="wrap reveal">
+      <blockquote>
+        "The goal is not to make pets seem human. It is to make humans better at being pets' companions."
       </blockquote>
-
-      <p class="philosophy__attribution reveal reveal-delay-1">4Feet</p>
+      <cite>4Feet</cite>
+    </div>
+    <div class="philosophy-wave-bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 40" preserveAspectRatio="none">
+        <path fill="#F5F0E8" d="M0,0 C360,40 1080,0 1440,30 L1440,0 L0,0 Z"/>
+      </svg>
     </div>
   </section>
 
-  <!-- ==========================================
-       FAQ
-       ========================================== -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <span class="section-label reveal">Questions</span>
-      <h2 class="faq__heading reveal"><span class="italic-gold">Good</span> questions.</h2>
+  <!-- ========== FAQ ========== -->
+  <section class="faq">
+    <div class="wrap">
+      <h2 class="reveal">You're probably <span class="ig">wondering...</span></h2>
 
-      <div class="faq__list">
-        <div class="faq__item reveal">
-          <details>
-            <summary>
-              Is this another pet translator gimmick?
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 7.5 10 12.5 15 7.5"/></svg>
-            </summary>
-            <div class="faq__answer">
-              No. We do not translate barks into words. 4Feet analyzes behavioral patterns across multiple modalities&thinsp;&mdash;&thinsp;posture, vocalizations, movement&thinsp;&mdash;&thinsp;grounded in peer-reviewed ethological research. This is behavioral science, not a party trick.
-            </div>
-          </details>
-        </div>
-
-        <div class="faq__item reveal reveal-delay-1">
-          <details>
-            <summary>
-              How is this different from MeowTalk?
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 7.5 10 12.5 15 7.5"/></svg>
-            </summary>
-            <div class="faq__answer">
-              MeowTalk focuses on cat vocalizations only. 4Feet covers dogs and cats, analyzes the full spectrum of behavior (not just sounds), and includes health monitoring, vet reports, and personalized pet profiles.
-            </div>
-          </details>
-        </div>
-
-        <div class="faq__item reveal reveal-delay-2">
-          <details>
-            <summary>
-              Do I need special hardware?
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 7.5 10 12.5 15 7.5"/></svg>
-            </summary>
-            <div class="faq__answer">
-              No. 4Feet works with just your phone camera. The optional smart collar adds continuous monitoring and health precision, but every core feature works without it.
-            </div>
-          </details>
-        </div>
-
-        <div class="faq__item reveal reveal-delay-3">
-          <details>
-            <summary>
-              Is the data private?
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 7.5 10 12.5 15 7.5"/></svg>
-            </summary>
-            <div class="faq__answer">
-              Live scans run entirely on your device. No raw video is stored. Cloud storage is opt-in only, encrypted, and you control deletion.
-            </div>
-          </details>
-        </div>
-
-        <div class="faq__item reveal reveal-delay-4">
-          <details>
-            <summary>
-              When does it launch?
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 7.5 10 12.5 15 7.5"/></svg>
-            </summary>
-            <div class="faq__answer">
-              We are in final development. Waitlist members get first access plus 3 months of premium free.
-            </div>
-          </details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       FINAL CTA
-       ========================================== -->
-  <section class="cta-final">
-    <div class="container--narrow">
-      <h2 class="cta-final__heading reveal">They've been talking to you <span class="italic-gold">this whole time.</span></h2>
-
-      <div class="cta-final__form reveal reveal-delay-1">
-        <form class="waitlist-form" action="#" method="post">
-          <div class="waitlist-form__radios">
-            <label class="waitlist-form__radio-label">
-              <input type="radio" name="pet_type_cta" value="dog" checked> Dog
-            </label>
-            <label class="waitlist-form__radio-label">
-              <input type="radio" name="pet_type_cta" value="cat"> Cat
-            </label>
-            <label class="waitlist-form__radio-label">
-              <input type="radio" name="pet_type_cta" value="both"> Both
-            </label>
+      <div class="faq-list reveal">
+        <details>
+          <summary>Is this another gimmick pet translator?</summary>
+          <div class="faq-answer">
+            <p>Nope. We don't turn barks into English sentences. 4Feet analyzes real behavioral patterns. Body language, vocalizations, movement. All grounded in peer-reviewed research. Think of it as behavioral science in your pocket, not a party trick.</p>
           </div>
-          <div class="waitlist-form__email-row">
-            <input type="email" class="waitlist-form__input" placeholder="Your email address" required aria-label="Email address">
-            <button type="submit" class="waitlist-form__submit">Join the Waitlist</button>
+        </details>
+
+        <details>
+          <summary>How is this different from MeowTalk?</summary>
+          <div class="faq-answer">
+            <p>MeowTalk only does cat sounds. 4Feet covers both dogs and cats, reads the full spectrum of behavior (not just audio), and includes health monitoring, vet reports, and profiles that learn your specific pet over time.</p>
           </div>
-        </form>
-        <p class="cta-final__note">No spam. No gimmicks. Just early access to something real.</p>
+        </details>
+
+        <details>
+          <summary>Do I need to buy a collar?</summary>
+          <div class="faq-answer">
+            <p>Nope! 4Feet works with just your phone camera. The optional smart collar adds continuous health monitoring, but every core feature works without it.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Is my pet's data safe?</summary>
+          <div class="faq-answer">
+            <p>Scans run on your device. No video is stored unless you choose to save it. Everything is encrypted. You control what gets kept and what gets deleted.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>When can I try it?</summary>
+          <div class="faq-answer">
+            <p>Soon! We're finishing up development. Waitlist members get first access plus 3 months of premium free.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       FOOTER
-       ========================================== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__logo">4Feet</div>
-      <p class="footer__tagline">Understanding animals on their terms.</p>
-      <div class="footer__links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-      </div>
-      <p class="footer__copy">&copy; 2026 4Feet. All rights reserved.</p>
+  <!-- ========== FINAL CTA ========== -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2 class="reveal">They've been talking to you <span class="ig">this whole time.</span></h2>
+
+      <form class="wl-form reveal" aria-label="Join the waitlist">
+        <label for="cta-email">Your email</label>
+        <input type="email" id="cta-email" name="email" placeholder="you@email.com" required autocomplete="email">
+
+        <div class="pet-radios" role="radiogroup" aria-label="What kind of pet do you have?">
+          <label><input type="radio" name="pet-cta" value="Dog" checked> Dog</label>
+          <label><input type="radio" name="pet-cta" value="Cat"> Cat</label>
+          <label><input type="radio" name="pet-cta" value="Both"> Both</label>
+        </div>
+
+        <button type="submit" class="wl-btn">Join the Waitlist</button>
+      </form>
+      <p class="bottom-note reveal">No spam. No nonsense. Just early access.</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="wrap">
+      <div class="footer-logo">4Feet</div>
+      <p class="footer-motto">Let your love reach them.</p>
+      <p class="footer-links">
+        <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
+      </p>
+      <p class="footer-copy">2026 4Feet. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- ==========================================
-       SCRIPTS
-       ========================================== -->
   <script>
-    // Scroll reveal with IntersectionObserver
-    (function () {
-      var els = document.querySelectorAll('.reveal');
+    /* Nav scroll effect */
+    (function() {
+      var nav = document.querySelector('.nav');
+      var scrolled = false;
+      function checkScroll() {
+        var s = window.scrollY > 30;
+        if (s !== scrolled) {
+          scrolled = s;
+          nav.classList.toggle('scrolled', s);
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+    })();
+
+    /* Reveal on scroll */
+    (function() {
+      var reveals = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)) {
-        els.forEach(function (el) { el.classList.add('visible'); });
+        reveals.forEach(function(el) { el.classList.add('visible'); });
         return;
       }
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      els.forEach(function (el) { observer.observe(el); });
+      reveals.forEach(function(el) { observer.observe(el); });
     })();
 
-    // Nav scroll effect
-    (function () {
-      var nav = document.getElementById('nav');
-      var last = 0;
-      window.addEventListener('scroll', function () {
-        var y = window.scrollY;
-        if (y > 60) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-        last = y;
-      }, { passive: true });
-    })();
+    /* Waitlist form submission to Google Sheets */
+    var GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+    document.querySelectorAll('form').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = btn.textContent;
+        var emailInput = form.querySelector('input[type="email"]');
+        var petRadio = form.querySelector('input[name^="pet"]:checked');
+        var email = emailInput ? emailInput.value.trim() : '';
+        var petType = petRadio ? petRadio.value : 'not specified';
+
+        if (!email) return;
+
+        btn.textContent = 'Joining...';
+        btn.disabled = true;
+
+        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+          btn.textContent = "You're on the list!";
+          btn.style.background = '#4a7c59';
+          emailInput.value = '';
+          setTimeout(function () {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+          return;
+        }
+
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            petType: petType,
+            source: 'waitlist-landing',
+            url: window.location.href
+          })
+        })
+        .then(function () {
+          btn.textContent = "You're on the list!";
+          btn.style.background = '#4a7c59';
+          emailInput.value = '';
+          setTimeout(function () {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+        })
+        .catch(function () {
+          btn.textContent = 'Oops, try again!';
+          btn.style.background = '#c0392b';
+          btn.disabled = false;
+          setTimeout(function () {
+            btn.textContent = originalText;
+            btn.style.background = '';
+          }, 3000);
+        });
+      });
+    });
   </script>
 </body>
 </html>
