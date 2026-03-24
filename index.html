@@ -1188,29 +1188,16 @@
         btn.textContent = 'Joining...';
         btn.disabled = true;
 
-        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbw2rHnuUj1Mvh5yw7vh-KGHTLrJZV1VJoEZ7TSTskVCWe--20qiqXNKS5Pms1a2gjyD/exec') {
-          btn.textContent = "You're on the list!";
-          btn.style.background = '#4a7c59';
-          emailInput.value = '';
-          setTimeout(function () {
-            btn.textContent = originalText;
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 3000);
-          return;
-        }
+        var formData = new FormData();
+        formData.append('email', email);
+        formData.append('petType', petType);
+        formData.append('source', 'waitlist-landing');
 
         fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: email,
-            petType: petType,
-            source: 'waitlist-landing',
-            url: window.location.href
-          })
+          body: formData
         })
+        .then(function (r) { return r.text(); })
         .then(function () {
           btn.textContent = "You're on the list!";
           btn.style.background = '#4a7c59';
